@@ -25,7 +25,7 @@ def login():
 
         conn = mysql.connector.connect(**db_config)
         cursor = conn.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM users WHERE username=%s AND password=%s", (username, password))
+        cursor.execute("SELECT * FROM users WHERE username=%s AND password_hash=%s", (username, password))
         user = cursor.fetchone()
         cursor.close()
         conn.close()
